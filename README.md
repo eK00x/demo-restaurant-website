@@ -4,6 +4,8 @@ Relaunch der Webseite eines Restaurants in Berlin, umgesetzt im November 2026 f�
 **Dieses Repository ist eine anonymisierte Kopie:** Name, Logo, Fotos, Adresse, Kontaktdaten, Impressum und Preise
 sind durch Platzhalter ersetzt. Das Restaurant „Jade Lotus“ ist fiktiv.
 
+**Live-Demo:** <https://jade-lotus-demo.netlify.app>
+
 ![Startseite](docs/screenshots/startseite.png)
 
 ## Worum es ging
