@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/*
+ * Design-Tokens & Farbschema:
+ * --color-header-bg: #0D5C46 (Tiefes Smaragdgrün für den Header und Footer)
+ * --color-primary: #0D5C46 (Tiefes Smaragdgrün – Header, Footer und Überschriften)
+ * --color-bg: #EBF1ED (Mattes, warmes Salbeigrün für den Haupt-Seitenhintergrund)
+ * --color-surface: #FFFFFF (Reines Weiß für Menükarten und Container)
+ * --color-accent-gold: #C59B27 (Warmes Altgold für Buttons, Preise, Logo und Highlights)
+ * --color-accent-gold-hover: #AF8820
+ * --color-accent-wine: #6B1D2F (Bordeauxrot für Gastro-Badges und Kategorie-Akzente)
+ * --color-heading: #0D5C46 (Tiefes Smaragdgrün für Überschriften)
+ * --color-text: #1B221E (Wald-Anthrazit für Fließtexte)
+ * --color-text-muted: #55695E (Gedämpftes Salbeigrau für Nebentexte)
+ * --color-border: rgba(13, 92, 70, 0.12) (Feine Konturen)
+ */
+@theme {
+  --color-header-bg: #0D5C46;
+  --color-primary: #0D5C46;
+  --color-bg: #EBF1ED;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FFFFFF;
+  --color-surface-sunken: #0D5C46;
+  --color-accent-gold: #C59B27;
+  --color-accent-gold-hover: #AF8820;
+  --color-accent-wine: #6B1D2F;
+  --color-heading: #0D5C46;
+  --color-text: #1B221E;
+  --color-text-muted: #55695E;
+  --color-border: rgba(13, 92, 70, 0.12);
+  --color-white: #FFFFFF;
+
+  /* Semantische Aliase für volle Abwärtskompatibilität */
+  --color-fg: #1B221E;
+  --color-cream: #EBF1ED;
+  --color-sand: #C59B27;
+  --color-gold: #C59B27;
+  --color-gold-deep: #AF8820;
+  --color-jade: #0D5C46;
+  --color-jade-light: #B2D1C2;
+  --color-on-accent: #1B221E;
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-mono: var(--font-space-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-playfair: var(--font-playfair), "Playfair Display", Georgia, serif;
+}
+
+:root {
+  --color-header-bg: #0D5C46;
+  --color-primary: #0D5C46;
+  --color-bg: #EBF1ED;
+  --color-surface: #FFFFFF;
+  --color-accent-gold: #C59B27;
+  --color-accent-gold-hover: #AF8820;
+  --color-accent-wine: #6B1D2F;
+  --color-heading: #0D5C46;
+  --color-text: #1B221E;
+  --color-text-muted: #55695E;
+  --color-border: rgba(13, 92, 70, 0.12);
+
+  color-scheme: light; /* Helles Grundkonzept für den Inhaltsbereich */
+  --header-h: 100px; /* dezent & harmonisch austarierte Header-Höhe auf Desktop */
+}
+
+@media (max-width: 999px) {
+  :root {
+    --header-h: 75px; /* dezent & harmonisch austarierte mobile Header-Höhe */
+  }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --color-bg: #0D5C46; /* Smaragdgrüner Seitenhintergrund auf dem Smartphone */
+  }
+}
+
+html,
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Header und Footer unverrückbar auf edlem Smaragdgrün (#0D5C46) */
+header {
+  background-color: #0D5C46 !important;
+}
+
+footer {
+  background-color: #0D5C46 !important;
+}
+
+@layer base {
+  h1,
+  h2 {
+    font-family: var(--font-playfair), "Playfair Display", Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Versteckt hässliche Scrollbars (z. B. auf Windows), Scrollen per Touch/Trackpad/Pfeilen bleibt voll aktiv */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Sanftes Scrollen nur für Nutzer, die Animationen nicht abgeschaltet haben. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Kontinuierliche, ruhige Pfeil-Animation für interaktive Links (Handy & Desktop) */
+@keyframes arrow-bounce-x {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+.animate-arrow-x {
+  display: inline-block;
+  animation: arrow-bounce-x 2.4s ease-in-out infinite;
+}
+
+/* Scheinende Sonnen-Animation für die Mittagsangebote (Handy & Desktop) */
+@keyframes sun-shine {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.3)) brightness(1);
+  }
+  50% {
+    transform: scale(1.08) rotate(8deg);
+    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.85)) drop-shadow(0 0 18px rgba(245, 158, 11, 0.45)) brightness(1.15);
+  }
+}
+
+.animate-sun-shine {
+  animation: sun-shine 3.5s ease-in-out infinite;
+}
+
+/* Kontinuierliche, angenehm langsame Puls-Animation für Menü-Banner (Bestseller etc. auf Handy & Desktop) */
+@keyframes badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 1px 3px rgba(107, 29, 47, 0.25);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.055);
+    box-shadow: 0 3px 10px rgba(107, 29, 47, 0.45);
+    filter: brightness(1.08);
+  }
+}
+
+.animate-badge-pulse {
+  display: inline-flex;
+  animation: badge-pulse 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+
